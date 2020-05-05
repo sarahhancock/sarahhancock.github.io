@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+    #header{
+      font-size: 35px;
+      padding-top: 70px;
+      font-weight: bold;
+      color: black;
+    }
+    #subheader{
+      padding-top: 25px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .row{
+      color: grey;
+      padding: 20px;
+    }
+
+  </style>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
+</head>
+
+{% extends "layout.html" %}
+
+{% block content %}
+<body>
+  <div class = "container">
+    <div class = "row" id = "header">
+      How to build a healthy vegan plate
+    </div>
+    <div id = "subheader">
+      <div class = "row"> Eating healthy made simple.</div>
+    </div>
+    <div class = "row">
+      You can&nbsp<span class = "bold"> simplify your meals </span>&nbspby creating a plate with appropriate proportions of each food group.
+    </div>
+    <div class = "row">
+      <button type="button"  class="btn btn-success">Start Learning</button>
+    </div>
+    
+  </div>
+</body>
+
+{% endblock %}
