@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<meta charset="utf-8"/>
 <html>
+<span id = "navbar"></span>
 <head>
 	<style>
     .question{
@@ -31,6 +33,12 @@
       padding: 5px;
       padding-left: 15px;
     }
+    .img{
+      width:80px;
+      height:80px;
+      object-fit:scale-down;
+      padding: 10px;
+    }
 
   </style>
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -38,12 +46,10 @@
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename = 'quiz.js') }}"></script>
+  <script type="text/javascript" src="./navbar.js"></script>
+  <script type="text/javascript" src="./quiz.js"></script>
 </head>
 
-{% extends "layout.html" %}
-
-{% block content %}
 <body>
   <div class = "container">
     <div id = "header" class = "row question">
@@ -74,5 +80,3 @@
     </div>
   </div>
 </body>
-
-{% endblock %}

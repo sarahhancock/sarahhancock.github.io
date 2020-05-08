@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<span id = "navbar"></span>
 <head>
   <style>
     .question{
@@ -34,17 +35,13 @@
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename = 'practice.js') }}"></script>
+  <script type="text/javascript" src="./navbar.js"></script>
+  <script type="text/javascript" src="./practice.js"></script>
 </head>
 
-{% extends "layout.html" %}
-
-{% block content %}
 <body>
   <div class = "container">
-    <div id = "header" class = "row question">
-      Add 
-    </div>
+    <div id = "header" class = "row question"></div>
     <div class = "row">
       <div class = "col-md-4">
         <div id = "plate" class = "drop row">
@@ -68,5 +65,3 @@
     </div>
   </div>
 </body>
-
-{% endblock %}

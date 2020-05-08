@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<span id = "navbar"></span>
+<head>
+	<style>
+    #header{
+      font-size: 35px;
+      padding-top: 70px;
+      font-weight: bold;
+      color: black;
+    }
+    #subheader{
+      padding-top: 25px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .row{
+      color: grey;
+      padding: 20px;
+      padding-bottom: 40px;
+    }
+    .big{
+      font-size: 20px;
+      font-weight:bold;
+      padding: 20px;
+    }
+
+  </style>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="./navbar.js"></script>
+  <script type="text/javascript" src="./index.js"></script>
+</head>
+
+<body>
+  <div class = "container">
+    <div class = "row" id = "header">
+      <div class = "col-md-12 text-center">
+        My Vegan Plate
+      </div>
+    </div>
+    <div id = "subheader" class = "row">
+      <div class = "col-md-12 text-center"> Explore each food group to learn how to build a healthy vegan plate.</div>
+    </div>
+    <div class = "row text-center">
+      <div class = "col-md-3"></div>
+      <div class = "col-md-3">
+        <button id = "learn" type="button"  class="btn btn-outline-success">
+          <img height = 100px; src = "https://media-public.canva.com/MACy94iCezg/5/thumbnail_large.png"><br>
+          <span class = "big">Start Learning</span>
+        </button>
+      </div>
+      <div class = "col-md-3">
+        <button id = "quiz" type="button"  class="btn btn-outline-success">
+          <img height = 100px; src = "https://media-public.canva.com/MACy4XiMdqs/5/thumbnail_large.png"><br>
+          <span class = "big">Take the Quiz</span>
+        </button>
+      </div>
+      <div class = "col-md-2"></div>
+    </div>
+    
+  </div>
+</body>

@@ -1,3 +1,41 @@
+var navbar = `
+<head>
+  <style>
+  .bold{
+    font-weight: bold;
+  }
+  .black{
+    color: black;
+  }
+  </style>
+  <link rel="shortcut icon" href="./favicon.ico">
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="./index.html">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="./learn.html"> Learn <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="./practice.html"> Take Quiz <span class="sr-only">(current)</span></a>
+      </li>
+    </ul> 
+  </div>
+</nav>
+`
+
 function createAlert(type, title, body, button1, button2){
 	deleteAlert()
 	var alert = $('<div class="alert" role="alert">')
@@ -200,7 +238,7 @@ var foods = [
 		"name": "edamame",
 		"category": "protein",
 		"incorrect": "Incorrect! Edamame is a protein source, and it is recommended that protein makes up 20% of your plate.",
-		"correct": "Nice! Edamame is a protein source, the correct food group is protein.",
+		"correct": "Nice! Edamame is a protein source, and the correct food group is protein.",
 		"fact": "Edamame are immature soybeans with a sweet and slightly grassy taste. They need to be steamed or boiled prior to consumption and can be eaten on their own or added to soups and salads.",
 		"image": "https://media-public.canva.com/MADVouzfm-Y/1/thumbnail_large.png",
 		"more": "https://www.medicalnewstoday.com/articles/280285",

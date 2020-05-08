@@ -2,7 +2,9 @@ $( function() {
     $( document ).tooltip();
 });
 
-q = 0;
+var q = 0;
+var state = 0;
+
 var questions = [
 	{
 		"question": "Practice question: Add a vegetable to your plate.",
@@ -12,23 +14,6 @@ var questions = [
 
 var take_quiz_btn = $('<button type="button" class="btn mr-1 btn-success take_quiz_btn">')
 take_quiz_btn.append("Start Quiz")
-
-function createAlert(type, title, body, button1, button2){
-	deleteAlert()
-	alert = $('<div class="alert" role="alert">')
-	alert.addClass("alert-" + type)
-	msgTitle = $('<div class = "row" id = "msg-title">')
-	msgTitle.append(title)
-	msgBody = $('<div class = "row" id = "msg-body">')
-	msgBody.append(body)
-	alert.append(msgTitle, msgBody)
-	alert.append(button1, button2)
-	$("#alert-row").append(alert)
-}
-
-function deleteAlert(){
-	$("#alert-row").empty()
-}
 
 function loadFoods() {
 	$(".food" ).each(function( index ) {
@@ -48,7 +33,7 @@ function loadFoods() {
 }
 
 $(document).on('click','.take_quiz_btn', function(){
-	window.location.href = "/quiz"
+	window.location.href = "./quiz.html"
 })
 
 function updateDragDrop() {
@@ -57,6 +42,7 @@ function updateDragDrop() {
         		$('.tooltip').hide();             
      		}, 
 			revert: function(valid_drop){
+				if (state == 0){
 					name = $(this).attr("id")
 					if (valid_drop){
 						for (i in foods){
@@ -64,6 +50,8 @@ function updateDragDrop() {
 							if (dict["name"] == name) {
 								if (dict["category"] == questions[q]["answer"]){
 									createAlert("success", "Correct", dict["correct"], take_quiz_btn)
+									state = 1;
+									$(this).draggable("destroy")
 									return false
 								} else {
 									createAlert("danger", "Incorrect", dict["incorrect"], "")
@@ -72,10 +60,13 @@ function updateDragDrop() {
 							}
 						}
 					} else {
-						createAlert("warning", "Drag the item to the plate", "", "")
+						createAlert("danger", "Drag the item to the plate", "", "")
 						return true
 					}
-				} 
+				} else {
+					return true
+				}
+			} 
 		}); 
 	    $( ".drop" ).droppable({ 
 	    	accept: function(d) {
@@ -96,8 +87,9 @@ function updateDragDrop() {
 }
 
 $(document).ready(function() { 
+	$("#navbar").append(navbar)
     $(".question").html(questions[q]["question"]);
-    var body = "Food items can be dragged to your plate. Try it! <br> Correct Answer = + 3 points <br> Incorrect Answer = - 1 point"
-    createAlert("success", "Get Ready For the Quiz!", body, "", "")
+    var body = "Food items can be dragged to your plate. Try it!"
+    createAlert("success", "Get Ready For the Quiz", body, "", "")
     loadFoods()
 }); 

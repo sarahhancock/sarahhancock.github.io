@@ -82,22 +82,7 @@ var questions = [
 	}
 ]
 
-function createAlert(type, title, body, button1, button2){
-	deleteAlert()
-	alert = $('<div class="alert" role="alert">')
-	alert.addClass("alert-" + type)
-	msgTitle = $('<div class = "row" id = "msg-title">')
-	msgTitle.append(title)
-	msgBody = $('<div class = "row" id = "msg-body">')
-	msgBody.append(body)
-	alert.append(msgTitle, msgBody)
-	alert.append(button1, button2)
-	$("#alert-row").append(alert)
-}
 
-function deleteAlert(){
-	$("#alert-row").empty()
-}
 
 function newPlate() {
 	$(".drag").remove()
@@ -105,7 +90,7 @@ function newPlate() {
 		for (var i = 4*index ; i < (4*index + 4); i++) {
 			dict = foods[i]
 			var col = $("<div class = 'col-md-3 drag'>")
-			var image = $("<img class = 'img-fluid food'>")
+			var image = $("<img class = 'img food'>")
 			image.attr("id", dict["name"])
 			if (dict["show"] == 1){			
 				image.attr("title", formatName(dict["name"]))	
@@ -138,11 +123,11 @@ function endQuiz() {
 }
 
 $(document).on('click','.quiz_btn', function(){
-	window.location.href = "/practice"
+	window.location.href = "./practice.html"
 })
 
 $(document).on('click','.learn_btn', function(){
-	window.location.href = "/learn"
+	window.location.href = "./learn.html"
 })
 
 function nextQuestion(){
@@ -174,13 +159,13 @@ function updateDragDrop() {
 							dict = foods[i]
 							if (dict["name"] == name) {
 								if (dict["category"] == questions[q]["answer"]){
-									$(this).draggable("disable")
 									dict["show"] = 0
-									createAlert("success", "Correct", dict["correct"], next_btn)
+									createAlert("success", "Correct (+3 points)", dict["correct"], next_btn)
 									updateScore(3)
+									$(this).draggable("destroy")
 									return false
 								} else {
-									createAlert("danger", "Incorrect", dict["incorrect"], "")
+									createAlert("danger", "Incorrect (-1 point)", dict["incorrect"], "")
 									updateScore(-1)
 									return true
 								}
@@ -214,7 +199,10 @@ function updateDragDrop() {
 }
 
 $(document).ready(function() { 
-    nextQuestion()
+	newPlate()
+	updateDragDrop()
+	nextQuestion()
     updateScore(0)
-    newPlate()    
+	$("#navbar").append(navbar)
+	endQuiz()
 }); 

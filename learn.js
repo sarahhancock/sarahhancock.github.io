@@ -1,7 +1,7 @@
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
-var quiz_btn = $('<button type="button" id = "quiz" class="btn btn-success">')
+var quiz_btn = $('<button type="button" id = "quiz" class="btn btn-outline-success">')
 quiz_btn.append("Ready to take the quiz?")
 
 function drawChart() {
@@ -62,13 +62,13 @@ function drawChart() {
             }
           }
         }
-        createAlert("light", "Click on each food item to learn more.", "", "", "")
+        createAlert("light", "", "Click on each food item to learn more.", "", "")
       }
   }
 }
 
 $(document).on('click','#quiz', function(){
-  window.location.href = "/practice"
+  window.location.href = "./practice.html"
 })
 
 $(document).on('click','.learn_more_btn', function(){
@@ -92,6 +92,8 @@ $(document).on('click','.food', function(){
     }
   }
 })
+
 $(document).ready(function() { 
+  $("#navbar").append(navbar)
   $(".quiz_button").append(quiz_btn)
 })
