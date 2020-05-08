@@ -82,8 +82,6 @@ var questions = [
 	}
 ]
 
-
-
 function newPlate() {
 	$(".drag").remove()
 	$(".food" ).each(function( index ) {
@@ -112,8 +110,16 @@ function updateScore(amount) {
 	$("#score").html(score)
 }
 
+function updateProgress() {
+	var width = ((q + 1) / 16) * 100
+	bar = $('<div class="progress-bar bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="16">')
+	bar.attr("aria-valuenow", q+1)
+	bar.attr("style", "width:"+width+"%")
+	$("#progress").html(bar)
+}
+
 function endQuiz() {
-	$(".question").html("You finished the quiz!")
+	$(".question").html("Congratulations! <br> You finished the quiz!")
 	if (score < 48){
 		body = ("Can you do better?")	
 	} else {
@@ -141,8 +147,7 @@ function nextQuestion(){
 		deleteAlert()
 	} else {
 		endQuiz()
-	} 
-	
+	}
 }
 $(document).on('click','.next_btn', nextQuestion);
 
@@ -162,6 +167,7 @@ function updateDragDrop() {
 									dict["show"] = 0
 									createAlert("success", "Correct (+3 points)", dict["correct"], next_btn)
 									updateScore(3)
+									updateProgress()
 									$(this).draggable("destroy")
 									return false
 								} else {
@@ -204,5 +210,4 @@ $(document).ready(function() {
 	nextQuestion()
     updateScore(0)
 	$("#navbar").append(navbar)
-	endQuiz()
 }); 
