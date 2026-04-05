@@ -621,6 +621,16 @@ header .scrolldown a {
    background: rgba(10, 22, 28, 0.72);
    border: 1px solid rgba(255, 255, 255, 0.14);
    backdrop-filter: none;
+   opacity: 1;
+   visibility: visible;
+   transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+#nav-wrap.is-hidden {
+   opacity: 0;
+   visibility: hidden;
+   transform: translateX(-50%) translateY(-12px);
+   pointer-events: none;
 }
 
 #nav-wrap.opaque {

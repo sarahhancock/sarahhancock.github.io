@@ -23,12 +23,18 @@
 	    e.preventDefault();
 
 	    var target = this.hash,
-	    $target = $(target);
+	    $target = $(target),
+         navOffset = $('#nav-wrap').outerHeight() || 0,
+         scrollTarget = target === '#home' ? 0 : Math.max($target.offset().top - navOffset - 18, 0);
 
 	    $('html, body').stop().animate({
-	        'scrollTop': $target.offset().top
+	        'scrollTop': scrollTarget
 	    }, 800, 'swing', function () {
-	        window.location.hash = target;
+	        if (window.history && window.history.replaceState) {
+               window.history.replaceState(null, null, target);
+            } else {
+               window.location.hash = target;
+            }
 	    });
 	});
 
@@ -81,25 +87,25 @@
 /*	Fade In/Out Primary Navigation
 ------------------------------------------------------*/
 
-   $(window).on('scroll', function() {
-
+   function syncNavigationVisibility() {
 		var h = $('header').height();
 		var y = $(window).scrollTop();
       var nav = $('#nav-wrap');
 
-	   if ( (y > h*.20) && (y < h) && ($(window).outerWidth() > 768 ) ) {
-	      nav.fadeOut('fast');
-	   }
-      else {
-         if (y < h*.20) {
-            nav.removeClass('opaque').fadeIn('fast');
-         }
-         else {
-            nav.addClass('opaque').fadeIn('fast');
-         }
+      if ($(window).outerWidth() <= 768) {
+         nav.removeClass('opaque is-hidden');
+         return;
       }
 
-	});
+      if (y < h - 20) {
+         nav.addClass('is-hidden').removeClass('opaque');
+      } else {
+         nav.removeClass('is-hidden').addClass('opaque');
+      }
+   }
+
+   syncNavigationVisibility();
+   $(window).on('scroll resize', syncNavigationVisibility);
 
 });
 
