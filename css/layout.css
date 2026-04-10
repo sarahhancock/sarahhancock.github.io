@@ -746,7 +746,7 @@ footer .row {
 
 #publications h1,
 #presentations h1 {
-   margin-bottom: 18px;
+   margin-bottom: 8px;
    color: var(--text-strong);
    font: 24px/1.3em 'opensans-bold', sans-serif;
    letter-spacing: 1px;
@@ -755,7 +755,7 @@ footer .row {
 #publications h1 span,
 #presentations h1 span {
    border-bottom: 3px solid var(--accent-strong);
-   padding-bottom: 6px;
+   padding-bottom: 0;
 }
 
 #publications h3,
