@@ -802,8 +802,7 @@ footer .row {
    color: var(--text-strong);
 }
 
-#publications .item:first-of-type .twelve.columns,
-#publications .item:nth-of-type(5) .twelve.columns {
+#publications .publication-group .twelve.columns {
    background: transparent;
    border: 0;
    border-left: 0;
